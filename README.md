@@ -1,5 +1,5 @@
 # react-pos
-A Bitcoin Cash Point-of-Sale written in ReactJS
+A Bitcoin Cash Point-of-Sale System written in ReactJS
 
 ## Installation
     git clone https://github.com/acidsploit/react-pos.git
