@@ -28,5 +28,8 @@ https://pos.devzero.be/react
 ### QR - Waiting for Payment
 ![qr waiting for payment](https://i.imgur.com/oo5Cjta.png)
 
+### QR - Received Payment
+![qr verified payment](https://i.imgur.com/irNACfa.png)
+
 ### QR - Verified Payment
-![qr verified payment](https://i.imgur.com/oo5Cjta.png)
+![qr verified payment](https://i.imgur.com/1w3M2Rw.png)
