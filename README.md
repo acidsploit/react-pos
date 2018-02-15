@@ -33,3 +33,9 @@ https://pos.devzero.be/react
 
 ### QR - Verified Payment
 ![qr verified payment](https://i.imgur.com/1w3M2Rw.png)
+
+### Sales Ledger
+![qr verified payment](https://i.imgur.com/RTmjDnq.png)
+
+### Settings
+![qr verified payment](https://i.imgur.com/18WGEtv.png)
