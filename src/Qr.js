@@ -33,8 +33,14 @@ class Qr extends Component {
         })
       })
       
-      setTimeout( () => this.setState({verify: true}), 10000)
+      var timeoutId = setTimeout( () => this.setState({verify: true}), 10000)
+      this.setState({timeoutId: timeoutId})
   }
+  
+  componentWillUnmount(){
+    clearTimeout(this.state.timeoutId);
+  }
+  
   
   handleCopy(){
     this.setState({copied: true})

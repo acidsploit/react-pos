@@ -52,7 +52,8 @@ class Payment extends Component {
   
   handleSubmit(amount, event) {
     event.preventDefault();
-    if(amount !== "0"){
+    console.log(amount)
+    if(amount !== "0" && amount !== ""){
       var label = this.state.name + ':' + UUID.v4();      
       var amt = parseFloat(amount).toFixed(2)
       var exr = parseFloat(this.state.exchangeRate).toFixed(2)

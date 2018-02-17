@@ -19,8 +19,7 @@ class App extends Component {
     return (
       <HashRouter>
         <div className="App">
-          <Navbar  left className="blue lighten-1">
-            <a href="/" className="brand-logo right"><i className="material-icons">autorenew</i>React PoS</a>
+          <Navbar left brand="React PoS" className="blue lighten-1">
             <li><NavLink to="/"><Icon left>home</Icon>HOME</NavLink></li>
             <li><NavLink to="/order"><Icon left>shopping_cart</Icon>ORDER</NavLink></li>
             <li><NavLink to="/payment"><Icon left>payment</Icon>PAYMENT</NavLink></li>

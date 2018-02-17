@@ -8,8 +8,20 @@ import {
 class Settings extends Component {
   constructor(props) {
     super(props);
-    this.state = {  server: "https://pos.devzero.be",
-                    name: "DEVZERO.BE",
+    var server
+    var shopName
+    if (localStorage.getItem('server'))
+      server = localStorage.getItem('server')
+    else
+      server = "http://localhost:8081"
+      
+    if (localStorage.getItem('name'))
+      shopName = localStorage.getItem('name')
+    else
+      shopName = "DEVZERO.BE"
+      
+    this.state = {  server: server,
+                    name: shopName,
                     cancel: "cancel",
                     save: "Save",
                     wipe: "Wipe",
@@ -65,6 +77,7 @@ class Settings extends Component {
     console.log(event.target.value)
     this.setState({ name: event.target.value,
                     save: "Save",
+                    cancel: "cancel",
                     submitted: false,
     })
     
@@ -75,6 +88,7 @@ class Settings extends Component {
     //console.log(event.target.value)
     this.setState({ server: event.target.value,
                     save: "Save",
+                    cancel: "cancel",
                     submitted: false,
     })
   }

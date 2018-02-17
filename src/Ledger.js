@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Timestamp from "react-timestamp";
+import {Icon} from 'react-materialize'
+
  
 class Ledger extends Component {
   constructor(props) {
@@ -46,10 +48,10 @@ class Ledger extends Component {
               <tr key = {item.id}>
                 <td>{item.id}</td>
                 <td><Timestamp time={item.timestamp} format='full' includeDay /></td>
-                <td>{item.addr}</td>
+                <td><a target="_blank" href={"https://blockdozer.com/insight/address/" + item.addr}>{item.addr}</a></td>
                 <td>{item.amount}</td>
                 <td>{item.label}</td>
-                <td>{item.received}</td>
+                <td>{item.received ? <Icon>check</Icon> : <Icon>clear</Icon>}</td>
               </tr>
             )
           })}
