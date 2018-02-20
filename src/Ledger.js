@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Timestamp from "react-timestamp";
-import {Icon} from 'react-materialize'
+import {Icon, Pagination} from 'react-materialize'
 
  
 class Ledger extends Component {
@@ -31,6 +31,8 @@ class Ledger extends Component {
     return (
       <div>
         <h3>Sales Ledger</h3>
+        
+        <Pagination items={10} activePage={2} maxButtons={8} />
         <table className="responsive-table striped">
           <thead>
             <tr>
@@ -51,7 +53,7 @@ class Ledger extends Component {
                 <td><a target="_blank" href={"https://blockdozer.com/insight/address/" + item.addr}>{item.addr}</a></td>
                 <td>{item.amount}</td>
                 <td>{item.label}</td>
-                <td>{item.received ? <Icon>check</Icon> : <Icon>clear</Icon>}</td>
+                <td>{item.received ? <a target="_blank" href={"https://blockdozer.com/insight/tx/" + item.txid} ><Icon className="green-text">check</Icon></a> : <Icon className="red-text">clear</Icon>}</td>
               </tr>
             )
           })}

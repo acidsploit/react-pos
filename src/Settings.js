@@ -13,7 +13,7 @@ class Settings extends Component {
     if (localStorage.getItem('server'))
       server = localStorage.getItem('server')
     else
-      server = "http://localhost:8081"
+      server = "https://pos.devzero.be"
       
     if (localStorage.getItem('name'))
       shopName = localStorage.getItem('name')
