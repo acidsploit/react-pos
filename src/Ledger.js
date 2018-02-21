@@ -32,7 +32,9 @@ class Ledger extends Component {
       <div>
         <h3>Sales Ledger</h3>
         
-        <Pagination items={10} activePage={2} maxButtons={8} />
+        {
+          //<Pagination items={10} activePage={2} maxButtons={8} />
+        }
         <table className="responsive-table striped">
           <thead>
             <tr>
