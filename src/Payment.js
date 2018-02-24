@@ -9,11 +9,13 @@ class Payment extends Component {
   constructor(props) {
     super(props);
     this.state = {  name: localStorage.getItem('name'),
+                    server: localStorage.getItem('server'),
                     amount: "0",
                     bch: 0,
                     exchangeRate: 0,
                     label: "LABEL",
-                    currency: 'EUR',
+                    currency: localStorage.getItem('currency'),
+                    source: localStorage.getItem('source'),
                     submit: 0,
                   };
 
@@ -31,21 +33,21 @@ class Payment extends Component {
   // TODO
   toggleCurrency(event){
     event.preventDefault();
-    this.setState({currency: this.state.currency === 'USD' ? 'EUR' : 'USD' });
-    this.queryCurrency(this.state.currency === 'USD' ? 'EUR' : 'USD')
+    this.setState({currency: this.state.currency === 'USD' ? localStorage.getItem('currency') : 'USD' });
+    this.queryCurrency(this.state.currency === 'USD' ? localStorage.getItem('currency') : 'USD' )
     window.Materialize.toast('<b>Toggle currency</b>', 3000 , 'green')
   }
   
   queryCurrency(currency) {
-    var query = "https://api.coinmarketcap.com/v1/ticker/bitcoin-cash/?convert=" + currency
+    var query = this.state.server + "/api/rate?source=" + this.state.source + "&currency=" + currency
     fetch(query)
       .then(d => d.json())
       .then(d => {
         this.setState({
-          exchangeRate: parseFloat(d['0']['price_' + currency.toLowerCase()]).toFixed(2),
+          exchangeRate: parseFloat(d['price']).toFixed(2),
         })
         window.Materialize.toast('Exchange Rate Fetched!<br />1 BCH = ' 
-                                  + parseFloat(d['0']['price_' + currency.toLowerCase()]).toFixed(2) 
+                                  + parseFloat(d['price']).toFixed(2) 
                                   + ' ' + currency, 3000, 'green')
       })
   }
@@ -86,6 +88,7 @@ class Payment extends Component {
          // <p>1 BCH = {this.state.exchangeRate} {this.state.currency}</p>
         } 
           <NumPad amount={this.state.amount} currency={this.state.currency} exchangeRate={this.state.exchangeRate} handler={this.handleSubmit} toggleCurrency={this.toggleCurrency}/>
+          <p><b>Currency Source: </b>{this.state.source}</p>
         </div>
       );
     } else {

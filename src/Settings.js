@@ -10,18 +10,34 @@ class Settings extends Component {
     super(props);
     var server
     var shopName
+    var source
+    var currency
     if (localStorage.getItem('server'))
       server = localStorage.getItem('server')
     else
-      server = "https://pos.devzero.be"
+      server = "http://localhost:8080"
+      localStorage.setItem('server', server)
       
     if (localStorage.getItem('name'))
       shopName = localStorage.getItem('name')
     else
       shopName = "DEVZERO.BE"
       
+    if (localStorage.getItem('source'))
+      source = localStorage.getItem('source')
+    else
+      source = "kraken"
+      
+    if (localStorage.getItem('currency'))
+      currency = localStorage.getItem('currency')
+    else
+      currency = "EUR"
+      
     this.state = {  server: server,
                     name: shopName,
+                    currency: currency,
+                    source: source,
+                    currencies: [currency],
                     cancel: "cancel",
                     save: "Save",
                     wipe: "Wipe",
@@ -33,10 +49,33 @@ class Settings extends Component {
     this.handleName = this.handleName.bind(this);
     this.handleServer = this.handleServer.bind(this);
     this.handleWipe = this.handleWipe.bind(this);
+    this.handleSource = this.handleSource.bind(this);
+    this.handleCurrency = this.handleCurrency.bind(this);
+    this.queryCurrencies = this.queryCurrencies.bind(this);
   }
   
   componentDidMount() {
-    //localStorage.clear()
+    this.queryCurrencies()
+  }
+  
+  queryCurrencies() {
+    var query = this.state.server + "/api/rate?source=" + this.state.source
+    
+    fetch(query)
+      .then(results => results.json())
+      .then(json => {
+//         console.log(json)
+        let data = []
+        for(let key in json['currencies']){
+          data.push(json['currencies'][key])
+//           console.log(key, json['currencies'][key])
+        }
+        if (!this.state.currency)
+          this.setState({currencies: data, currency: data[0]})
+        else
+          data.unshift("")
+          this.setState({currencies: data})
+      })
   }
   
   handleWipe(event) {
@@ -57,6 +96,8 @@ class Settings extends Component {
     if (this.state.name && this.state.server) {
       localStorage.setItem('name', this.state.name);
       localStorage.setItem('server', this.state.server);
+      localStorage.setItem('source', this.state.source);
+      localStorage.setItem('currency', this.state.currency);
       
       this.setState({ save: "Saved!",
                       submitted: true,
@@ -66,10 +107,7 @@ class Settings extends Component {
       })
       
       window.Materialize.toast('<b>SETTINGS SAVED!</b><br />', 4000 , 'green')
-        
     }
-    
-    //console.log(localStorage.getItem('name'), localStorage.getItem('server'))
   }
   
   handleName(event){
@@ -80,13 +118,37 @@ class Settings extends Component {
                     cancel: "cancel",
                     submitted: false,
     })
-    
   }
   
   handleServer(event){
     event.preventDefault()
     //console.log(event.target.value)
     this.setState({ server: event.target.value,
+                    save: "Save",
+                    cancel: "cancel",
+                    submitted: false,
+    })
+  }
+  
+  handleSource(event){
+    event.preventDefault()
+    //console.log(event.target.value)
+    this.setState({ source: event.target.value,
+                    currencies: [],
+                    save: "Save",
+                    cancel: "cancel",
+                    submitted: false,
+    })
+    
+    this.queryCurrencies()
+    
+  }
+  
+  handleCurrency(event){
+    event.preventDefault()
+//     console.log(event.target.value)
+    
+    this.setState({ currency: event.target.value,
                     save: "Save",
                     cancel: "cancel",
                     submitted: false,
@@ -110,6 +172,22 @@ class Settings extends Component {
               </Col>
             </Row>
             <Row>
+              <Col s={12} l={6} xl={6} className="offset-l3 offset-xl3">
+                <Input s={8} type='select' label='Exchange Rate Source' defaultValue={this.state.source} onChange={this.handleSource.bind(this)}>
+                  <option value='cryptocompare'>CryptoCompare</option>
+                  <option value='coinbase'>Coinbase</option>
+                  <option value='kraken'>Kraken</option>
+                </Input>
+                <Input s={4} type='select' label='Currency' defaultValue={this.state.currency} onChange={this.handleCurrency.bind(this)}>
+                  {this.state.currencies.map(function(item) {
+                    return (
+                      <option key={item} value={item}>{item}</option>
+                    )
+                  })}
+                </Input>
+              </Col>
+            </Row>
+            <Row>
               <Col s={4} l={3} xl={3} className="offset-s4 offset-l3">
                 <NavLink to="/"><Button large waves='light' className="red left"><Icon left>{this.state.cancel}</Icon>{this.state.cancel}</Button></NavLink>
                 
@@ -125,6 +203,17 @@ class Settings extends Component {
             </Row>
           </Col>
         </form>
+        {        
+//         <div align='left'>
+//           <h4>DEBUG</h4>
+//           <ul>
+//             <li>Name: {this.state.name}</li>
+//             <li>Server: {this.state.server}</li>
+//             <li>Source: {this.state.source}</li>
+//             <li>Currency: {this.state.currency}</li>
+//           </ul>
+//         </div>
+        }
       </Container>
     );
   }

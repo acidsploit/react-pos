@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Timestamp from "react-timestamp";
-import {Icon, Pagination} from 'react-materialize'
+import {Button, Icon, Pagination} from 'react-materialize'
 
  
 class Ledger extends Component {
@@ -55,7 +55,11 @@ class Ledger extends Component {
                 <td><a target="_blank" href={"https://blockdozer.com/insight/address/" + item.addr}>{item.addr}</a></td>
                 <td>{item.amount}</td>
                 <td>{item.label}</td>
-                <td>{item.received ? <a target="_blank" href={"https://blockdozer.com/insight/tx/" + item.txid} ><Icon className="green-text">check</Icon></a> : <Icon className="red-text">clear</Icon>}</td>
+                {
+                //<td>{item.received ? <a target="_blank" href={"https://blockdozer.com/insight/tx/" + item.txid}><Icon className="green-text">check</Icon></a> : <Icon className="red-text">clear</Icon>}</td>
+                }
+                <td>{item.received ? <Button waves='light' className='grey lighten-2' node='a' target='_blank' href={"https://blockdozer.com/insight/tx/" + item.txid}><Icon className="green-text">check</Icon></Button> : <Icon className="red-text">clear</Icon>}</td>
+                
               </tr>
             )
           })}
