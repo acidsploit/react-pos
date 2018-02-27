@@ -15,13 +15,13 @@ class Settings extends Component {
     if (localStorage.getItem('server'))
       server = localStorage.getItem('server')
     else
-      server = "http://localhost:8080"
+      server = "https://demo.pyxpub.io"
       localStorage.setItem('server', server)
       
     if (localStorage.getItem('name'))
       shopName = localStorage.getItem('name')
     else
-      shopName = "DEVZERO.BE"
+      shopName = "PYXPUB.IO"
       
     if (localStorage.getItem('source'))
       source = localStorage.getItem('source')
@@ -38,6 +38,7 @@ class Settings extends Component {
                     currency: currency,
                     source: source,
                     currencies: [currency],
+                    sources: [source],
                     cancel: "cancel",
                     save: "Save",
                     wipe: "Wipe",
@@ -55,6 +56,23 @@ class Settings extends Component {
   }
   
   componentDidMount() {
+    var query = this.state.server + "/api/rate"
+    fetch(query)
+      .then(results => results.json())
+      .then(json => {
+//         console.log(json)
+        let data = []
+        for(let key in json['sources']){
+          data.push(json['sources'][key])
+//           console.log(key, json['currencies'][key])
+        }
+        if (!this.state.source)
+          this.setState({sources: data, source: data[0]})
+        else
+          //data.unshift("")
+          this.setState({sources: data})
+      })
+    
     this.queryCurrencies()
   }
   
@@ -174,9 +192,11 @@ class Settings extends Component {
             <Row>
               <Col s={12} l={6} xl={6} className="offset-l3 offset-xl3">
                 <Input s={8} type='select' label='Exchange Rate Source' defaultValue={this.state.source} onChange={this.handleSource.bind(this)}>
-                  <option value='cryptocompare'>CryptoCompare</option>
-                  <option value='coinbase'>Coinbase</option>
-                  <option value='kraken'>Kraken</option>
+                  {this.state.sources.map(function(item) {
+                      return (
+                        <option key={item} value={item}>{item.charAt(0).toUpperCase() + item.slice(1)}</option>
+                      )
+                    })}
                 </Input>
                 <Input s={4} type='select' label='Currency' defaultValue={this.state.currency} onChange={this.handleCurrency.bind(this)}>
                   {this.state.currencies.map(function(item) {

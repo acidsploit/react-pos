@@ -10,8 +10,15 @@ class Home extends Component {
   constructor(props) {
     super(props);
     
+    var server
+    if (localStorage.getItem('server'))
+      server = localStorage.getItem('server')
+    else
+      server = "https://demo.pyxpub.io"
+      localStorage.setItem('server', server)
+    
     this.state = {  name: "DEFAULT",
-                    server: "-",
+                    server: server,
                   };
   }
   
@@ -26,14 +33,11 @@ class Home extends Component {
                   })
   }
   
-  Greeting() {
-
-  }
   
   render() {
     let greeting = null
     if (this.state.name && this.state.server){
-      greeting =  <h3>Welcome to {this.state.name}!</h3>
+      greeting =  <h4>Welcome to {this.state.name}!</h4>
     } else {
       greeting = (
         <Row>
@@ -53,7 +57,7 @@ class Home extends Component {
     return (
       <HashRouter>
         <Container>
-          {greeting}
+         <br />{greeting}<br />
           <CardPanel className="grey lighten-3 grey-text">
             <Row>
               <Col s={12} className='grid-index'><h4>Choose your action:</h4></Col>
