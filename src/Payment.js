@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import {Button, Container, Icon} from 'react-materialize'
+import {Button, Container, Icon, Row, Col} from 'react-materialize'
 import './style.css';
 import {default as UUID} from "node-uuid";
 import Qr from "./Qr";
 import NumPad from "./NumPad";
+import PingPong from './PingPong';
 
 class Payment extends Component {
   constructor(props) {
@@ -31,9 +32,11 @@ class Payment extends Component {
   }
   
   // TODO
-  toggleCurrency(event){
+  toggleCurrency(amount, event){
     event.preventDefault();
-    this.setState({currency: this.state.currency === 'USD' ? localStorage.getItem('currency') : 'USD' });
+    this.setState({ currency: this.state.currency === 'USD' ? localStorage.getItem('currency') : 'USD',
+                    amount: amount,
+    });
     this.queryCurrency(this.state.currency === 'USD' ? localStorage.getItem('currency') : 'USD' )
     window.Materialize.toast('<b>Toggle currency</b>', 3000 , 'green')
   }
@@ -56,7 +59,7 @@ class Payment extends Component {
     event.preventDefault();
     console.log(amount)
     if(amount !== "0" && amount !== ""){
-      var label = this.state.name + ':' + UUID.v4();      
+      var label = this.state.name + ':' + UUID.v4().slice(-12, -1);      
       var amt = parseFloat(amount).toFixed(2)
       var exr = parseFloat(this.state.exchangeRate).toFixed(2)
       var bch = ( 1 / exr ) * amt
@@ -87,8 +90,13 @@ class Payment extends Component {
         {
          // <p>1 BCH = {this.state.exchangeRate} {this.state.currency}</p>
         } 
-          <NumPad amount={this.state.amount} currency={this.state.currency} exchangeRate={this.state.exchangeRate} handler={this.handleSubmit} toggleCurrency={this.toggleCurrency}/>
+        <Row>
+        <Col s={12} l={4} xl={4} className="offset-l4 offset-xl4">
+          <NumPad title="Payment" submitIcon="check" amount={this.state.amount} currency={this.state.currency} exchangeRate={this.state.exchangeRate} handler={this.handleSubmit} toggleCurrency={this.toggleCurrency}/>
           <p><b>Currency Source: </b>{this.state.source}</p>
+        </Col>
+        </Row>
+        <PingPong />
         </div>
       );
     } else {

@@ -15,11 +15,27 @@ import Ledger from "./Ledger";
 import Settings from "./Settings";
 
 class App extends Component {
+    constructor(props) {
+    super(props);
+    
+    var shopName
+
+    if (localStorage.getItem('name'))
+      shopName = localStorage.getItem('name')
+    else
+      shopName = "PYXPUB.IO"
+      localStorage.setItem('name', shopName)
+
+    
+    this.state = {  name: shopName,
+                  };
+  }
+  
   render() {
     return (
       <HashRouter>
         <div className="App">
-          <Navbar left brand="React PoS" className="blue lighten-1">
+          <Navbar left brand={this.state.name} className="blue lighten-1 home-brand">
             <li><NavLink to="/"><Icon left>home</Icon>HOME</NavLink></li>
             <li><NavLink to="/order"><Icon left>shopping_cart</Icon>ORDER</NavLink></li>
             <li><NavLink to="/payment"><Icon left>payment</Icon>PAYMENT</NavLink></li>
