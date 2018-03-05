@@ -372,7 +372,9 @@ constructor(props) {
                       <Col s={3} className="offset-l0 offset-xl0">
                         <div className="order-buttons right">
                           <Button  floating waves='light' className="green order-btn" onClick={this.handlePlus.bind(this, item.id)}><Icon>add</Icon></Button>
-                          <Button  floating waves='light' className="red order-btn" onClick={this.handleMin.bind(this, item.id)}><Icon>remove</Icon></Button>
+                          { item.count > 1  ? <Button  floating waves='light' className="red order-btn" onClick={this.handleMin.bind(this, item.id)}><Icon>remove</Icon></Button>
+                                            : <Button  floating waves='light' className="red order-btn" onClick={this.handleMin.bind(this, item.id)}><Icon>clear</Icon></Button>
+                          }
                           <br /><span className="right mono-tiny">({parseFloat(item.timestamp).toFixed(0)})</span>
                         </div>
                       </Col>

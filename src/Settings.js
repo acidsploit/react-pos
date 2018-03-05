@@ -405,8 +405,8 @@ class Settings extends Component {
                         </Col>
                         <Col s={7} l={7} xl={7} className="offset-l0 offset-xl0">
                           <div className="input-buttons">
-                            <Button  floating waves='light' className="red input-btn" onClick={this.handleTaxMin.bind(this, key)}><Icon>remove</Icon></Button>
-                            {this.state.tax.length === (key + 1) ? <Button  floating waves='light' className="green input-btn" onClick={this.handleTaxPlus.bind(this, key)}><Icon>add</Icon></Button> : ""}
+                            <Button floating waves='light' className="red input-btn" onClick={this.handleTaxMin.bind(this, key)}><Icon>remove</Icon></Button>
+                            {this.state.tax.length === (key + 1) ? <Button floating waves='light' className="green input-btn" onClick={this.handleTaxPlus.bind(this, key)}><Icon>add</Icon></Button> : ""}
                           </div>
                         </Col>
                       </div>
