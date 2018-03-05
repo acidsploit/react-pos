@@ -80,7 +80,7 @@ class OrderListing extends Component {
           </Row>
           <Row>
             <Col s={12} l={8} xl={8} className="offset-l2 offset-xl2">
-              {this.state.tx !== 'NoTX' ? <Button large waves='light' className='left green darken-2' node='a' target='_blank' href={"https://blockdozer.com/insight/tx/" + this.state.tx}><Icon left>payment</Icon>payment</Button> : <h4 className="left">No payment found!</h4>}
+              {this.state.tx !== 'NoTX' ? <Button large waves='light' className='left green darken-2  bold-big' node='a' target='_blank' href={"https://blockdozer.com/insight/tx/" + this.state.tx}><Icon left>payment</Icon>payment</Button> : <h4 className="left">No payment found!</h4>}
             </Col>
           </Row>
           <Row>

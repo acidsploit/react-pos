@@ -27,6 +27,7 @@ constructor(props) {
                   currency: localStorage.getItem('currency'),
                   source: localStorage.getItem('source'),
                   submit: 0,
+                  clear: 0,
                   items: [],
                   subtotal: 0,
                   subtotalBch: 0,
@@ -54,6 +55,29 @@ constructor(props) {
     this.getColor = this.getColor.bind(this);
     this.handlePlus = this.handlePlus.bind(this);
     this.handleMin = this.handleMin.bind(this);
+    this.handleClear = this.handleClear.bind(this);
+  }
+  
+  handleClear(event){
+    event.preventDefault()
+    
+    this.setState({ submit:0,
+                    clear: 0,
+                    amount: "0",
+                    bch: 0,
+                    label: "LABEL",
+                    items: [],
+                    subtotal: 0,
+                    subtotalBch: 0,
+                    discountBch: 0,
+                    taxBch: 0,
+                    totalBch: 0,
+                    total: 0,
+    })
+    
+    window.Materialize.toast('Order Cleared!', 3000, 'red')
+    
+    this.queryCurrency(this.state.currency)
   }
   
   componentWillMount() {
@@ -164,7 +188,7 @@ constructor(props) {
     } else {
       var label = this.state.name + ':' + UUID.v4().slice(-12, -1);
       this.saveOrder(label)
-      var timeoutId = setTimeout( () => this.setState({submit: 1, label: label}), 1000)
+      var timeoutId = setTimeout( () => this.setState({submit: 1, clear: 1, label: label}), 1000)
       this.setState({timeoutId: timeoutId})
 //       this.setState({ submit: 1,
 //                       label: label,
@@ -308,10 +332,12 @@ constructor(props) {
                   </Row>
                   <Row>
                     <Col s={4} l={4} xl={4} className="offset-l0 offset-xl0">
-                      <Button large waves='light' className="green left" onClick={this.handlePayment.bind(this)}><Icon left>payment</Icon>Pay</Button>
+                      <Button large waves='light' className="green left bold-big" onClick={this.handlePayment.bind(this)}><Icon left>payment</Icon>Pay</Button>
                     </Col>
                     <Col s={4} l={4} xl={4} className="offset-l0 offset-xl0">
-                      <NavLink to="/"><Button large waves='light' className="red left"><Icon left>cancel</Icon>Cancel</Button></NavLink>
+                      { this.state.clear === 0 ? <NavLink to="/"><Button large waves='light' className="red left bold-big"><Icon left>cancel</Icon>Cancel</Button></NavLink>
+                                                : <Button large waves='light' className="orange left bold-big" onClick={this.handleClear.bind(this)}><Icon left>clear</Icon>Clear!</Button>
+                      }
                     </Col>
                     <Col s={4} l={4} xl={4} className="offset-l0 offset-xl0">
                       <div className="subtotal-right"><h5>Subtotal:</h5></div>
@@ -347,9 +373,9 @@ constructor(props) {
                         <div className="order-buttons right">
                           <Button  floating waves='light' className="green order-btn" onClick={this.handlePlus.bind(this, item.id)}><Icon>add</Icon></Button>
                           <Button  floating waves='light' className="red order-btn" onClick={this.handleMin.bind(this, item.id)}><Icon>remove</Icon></Button>
+                          <br /><span className="right mono-tiny">({parseFloat(item.timestamp).toFixed(0)})</span>
                         </div>
                       </Col>
-                      <span className="left mono-tiny">{parseFloat(item.timestamp).toFixed(0)}</span>
                     </Row>
                   );
                 })}

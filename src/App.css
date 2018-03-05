@@ -38,7 +38,14 @@ body {
 }
 
 .bold {
-  font-weight: 800;
+/*   font-family: 'Ubuntu'; */
+  font-weight: bold;
+}
+
+.bold-big {
+/*   font-family: 'Ubuntu'; */
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 .price {

@@ -448,10 +448,10 @@ class Settings extends Component {
             </Row>
             <Row>
               <Col s={4} l={3} xl={3} className="offset-s4 offset-l3">
-                <NavLink to="/"><Button large waves='light' className="red left"><Icon left>{this.state.cancel}</Icon>{this.state.cancel}</Button></NavLink>
+                <NavLink to="/"><Button large waves='light' className="red left bold-big"><Icon left>{this.state.cancel}</Icon>{this.state.cancel}</Button></NavLink>
               </Col>
               <Col s={4} l={3} xl={3}>
-                <Button large waves='light' className="orange right" disabled={this.state.wiped} onClick={this.handleWipe.bind(this)}><Icon left>delete_forever</Icon>{this.state.wipe}</Button>
+                <Button large waves='light' className="orange right bold-big" disabled={this.state.wiped} onClick={this.handleWipe.bind(this)}><Icon left>delete_forever</Icon>{this.state.wipe}</Button>
               </Col>
             </Row>
             <Row>
