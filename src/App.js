@@ -35,7 +35,7 @@ class App extends Component {
     return (
       <HashRouter>
         <div className="App">
-          <Navbar left brand={this.state.name} className="blue lighten-1 home-brand">
+          <Navbar left brand={this.state.name} className="light-blue darken-4 home-brand">
             <li><NavLink to="/"><Icon left>home</Icon>HOME</NavLink></li>
             <li><NavLink to="/order"><Icon left>shopping_cart</Icon>ORDER</NavLink></li>
             <li><NavLink to="/payment"><Icon left>payment</Icon>PAYMENT</NavLink></li>

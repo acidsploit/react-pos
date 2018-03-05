@@ -19,7 +19,6 @@ body {
   float: left;
 }
 
-
 .action {
   margin-top: 3vw;
   margin-bottom: 3vw;
@@ -31,18 +30,7 @@ body {
   font-size: 1.4em;
 }
 
-.input-field input[id='amount'] {
-  font-family: 'Ubuntu Mono';
-  font-size: 3em;
-  text-align: right;
-}
 
-.input-field label[id='currency'] {
-  font-family: 'Ubuntu Bold';
-  font-size: 2.3em;
-  font-weight: 900;
-  margin-top: -16px;
-}
 
 .mono-tiny {
   font-family: 'Ubuntu Mono';
@@ -62,10 +50,6 @@ body {
   bottom: 0px;
 }
 
-.calculator-footer {
-/*   font-family: 'Ubuntu Mono'; */
-  font-size: 1em;
-}
 
 .home-brand {
   font-weight: 900;

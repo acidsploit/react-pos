@@ -123,9 +123,9 @@ class Home extends Component {
               <Col s={12} className='grid-index'><h3>Choose your action:</h3></Col>
             </Row>
             <Row>
-              <Col s={12} l={4} className='grid-index action'><NavLink to="/order"><Button large waves='light' className="blue lighten-1 btn-action"><Icon left>shopping_cart</Icon>ORDER</Button></NavLink></Col>
-              <Col s={12} l={4} className='grid-index action'><NavLink to="/payment"><Button large waves='light' className="blue lighten-1 btn-action"><Icon left>payment</Icon>PAYMENT</Button></NavLink></Col>
-              <Col s={12} l={4} className='grid-index action'><NavLink to="/ledger"><Button large waves='light' className="blue lighten-1 btn-action"><Icon left>list</Icon>LEDGER</Button></NavLink></Col>
+              <Col s={12} l={4} className='grid-index action'><NavLink to="/order"><Button large waves='light' className="light-blue darken-4 btn-action"><Icon left>shopping_cart</Icon>ORDER</Button></NavLink></Col>
+              <Col s={12} l={4} className='grid-index action'><NavLink to="/payment"><Button large waves='light' className="light-blue darken-4 btn-action"><Icon left>payment</Icon>PAYMENT</Button></NavLink></Col>
+              <Col s={12} l={4} className='grid-index action'><NavLink to="/ledger"><Button large waves='light' className="light-blue darken-4 btn-action"><Icon left>list</Icon>LEDGER</Button></NavLink></Col>
               {
               //<Col s={12} l={4} className='grid-index action'><NavLink to="/settings"><Button large waves='light' icon="settings" className="blue lighten-1"/></NavLink></Col>
               }

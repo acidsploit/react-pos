@@ -139,8 +139,8 @@ class Ledger extends Component {
           </div>
           <h3>Order: {this.state.label}</h3>
           <div className='backandforth'>
-            <Button waves="light" className="blue lighten-1 btn-backandforth" onClick={this.handlePrev.bind(this)}><Icon left>keyboard_arrow_left</Icon>Prev</Button>
-            <Button waves="light" className="blue lighten-1 btn-backandforth" onClick={this.handleNext.bind(this)}><Icon right>keyboard_arrow_right</Icon>Next</Button>
+            <Button waves="light" className="light-blue darken-4 btn-backandforth" onClick={this.handlePrev.bind(this)}><Icon left>keyboard_arrow_left</Icon>Prev</Button>
+            <Button waves="light" className="light-blue darken-4 btn-backandforth" onClick={this.handleNext.bind(this)}><Icon right>keyboard_arrow_right</Icon>Next</Button>
           </div>
           
           <OrderListing label={this.state.label} tx={this.state.tx} />

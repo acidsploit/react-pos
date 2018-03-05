@@ -1,0 +1,131 @@
+ @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+ 
+ .input-field input[id='amount'] {
+  font-family: 'Ubuntu Mono';
+  font-size: 3em;
+  text-align: right;
+}
+
+.input-field label[id='currency'] {
+  font-family: 'Ubuntu Bold';
+  font-size: 2.3em;
+  font-weight: 900;
+  margin-top: -16px;
+}
+
+.calculator-footer {
+/*   font-family: 'Ubuntu Mono'; */
+  font-size: 0.8em;
+}
+
+.numpad {
+/*   border: 0px solid; */
+/*   background-color: #dfe1f3; */
+  margin-top: 6vh;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 22vw;
+  min-width: 15vw;
+}
+
+.input-panel {
+  height: 100px;
+}
+
+.buttons {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ibtn{
+    position: relative;
+    float: left;
+    font-size: 1.5em;
+    color: white;
+/*     border: 1px solid; */
+/*     border-color: white; */
+    width: 100%;
+    height: 3vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1vh;
+}
+
+
+@media (max-width: 1500px){
+    body {
+        margin-top: 2vh;
+    }
+    .numpad {
+/*       max-width: 90%; */
+      min-width: 10vw;
+      max-width: 27vw;
+    } 
+    .ibtn {
+        padding: 0 0.5rem;
+        width:100%;
+        height:4vw;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1vh;
+    }
+}
+
+@media (max-width: 1200px){
+    body {
+        margin-top: 2vh;
+    }
+    .numpad {
+/*       max-width: 90%; */
+      min-width: 10vw;
+      max-width: 35vw;
+    } 
+    .ibtn {
+        padding: 0 0.5rem;
+        width:100%;
+        height:5vw;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1vh;
+    }
+}
+
+@media (max-width: 900px){
+    body {
+        margin-top: 2vh;
+    }
+    .numpad {
+      min-width: 30vw;
+      max-width: 50vw;
+    } 
+    .ibtn {
+        width:100%;
+        height:8vw;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1vh;
+        
+    }
+}
+
+@media (max-width: 600px){
+    body {
+        margin-top: 2vh;
+    }
+    .numpad {
+      min-width: 70vw;
+      max-width: 90vw;
+    } 
+    .ibtn {
+        padding: 0 0.5rem;
+        width:100%;
+        height: 12vw;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1vh;
+    }
+}

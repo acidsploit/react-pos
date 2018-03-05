@@ -271,7 +271,7 @@ constructor(props) {
       return (
         <div>
           <Row>
-            <Col s={12} l={4} xl={4} className="offset-l1 offset-xl1">
+            <Col s={12} l={5} xl={5} className="offset-l0 offset-xl0">
               <NumPad title="New Item" submitIcon="add_shopping_cart" amount={this.state.amount} currency={this.state.currency} exchangeRate={this.state.exchangeRate} handler={this.handleItem} toggleCurrency={this.toggleCurrency}/>
               <p><b>Currency Source: </b>{this.state.source}</p>
             </Col>
@@ -345,8 +345,8 @@ constructor(props) {
                       </Col>
                       <Col s={3} className="offset-l0 offset-xl0">
                         <div className="order-buttons right">
-                          <Button large floating waves='light' className="green order-btn" onClick={this.handlePlus.bind(this, item.id)}><Icon>add</Icon></Button>
-                          <Button large floating waves='light' className="red order-btn" onClick={this.handleMin.bind(this, item.id)}><Icon>remove</Icon></Button>
+                          <Button  floating waves='light' className="green order-btn" onClick={this.handlePlus.bind(this, item.id)}><Icon>add</Icon></Button>
+                          <Button  floating waves='light' className="red order-btn" onClick={this.handleMin.bind(this, item.id)}><Icon>remove</Icon></Button>
                         </div>
                       </Col>
                       <span className="left mono-tiny">{parseFloat(item.timestamp).toFixed(0)}</span>
