@@ -136,7 +136,7 @@ constructor(props) {
   }
   
   handleItem(amount, event) {
-    //event.preventDefault();
+    event.preventDefault();
     console.log(amount)
     if(amount !== "0" && amount !== ""){
       //var label = this.state.name + ':' + UUID.v4();      

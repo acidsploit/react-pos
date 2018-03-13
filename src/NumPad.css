@@ -58,7 +58,7 @@
 
 @media (max-width: 1500px){
     body {
-        margin-top: 2vh;
+        margin-top: 0vh;
     }
     .numpad {
 /*       max-width: 90%; */
@@ -77,17 +77,17 @@
 
 @media (max-width: 1200px){
     body {
-        margin-top: 2vh;
+        margin-top: 0vh;
     }
     .numpad {
 /*       max-width: 90%; */
       min-width: 10vw;
-      max-width: 35vw;
+      max-width: 45vw;
     } 
     .ibtn {
         padding: 0 0.5rem;
         width:100%;
-        height:5vw;
+        height:5.5vw;
         margin-left: auto;
         margin-right: auto;
         margin-top: 1vh;
@@ -96,7 +96,7 @@
 
 @media (max-width: 900px){
     body {
-        margin-top: 2vh;
+        margin-top: 0vh;
     }
     .numpad {
       min-width: 30vw;
@@ -114,7 +114,7 @@
 
 @media (max-width: 600px){
     body {
-        margin-top: 2vh;
+        margin-top: 0vh;
     }
     .numpad {
       min-width: 70vw;

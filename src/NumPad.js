@@ -29,7 +29,8 @@ class NumPad extends Component {
     })
   }
   
-  addText(text) {
+  addText(text, event) {
+    event.preventDefault()
     var t = this.state.amount;
     if (t === "0"){
       t = "" + text;
@@ -41,7 +42,8 @@ class NumPad extends Component {
     });
   }
   
-  delText() {
+  delText(event) {
+    event.preventDefault()
     var t = this.state.amount;
     t = t.slice(0, -1);
     this.setState({ amount:t,
@@ -49,7 +51,8 @@ class NumPad extends Component {
     });
   }
   
-  clearText() {
+  clearText(event) {
+    event.preventDefault()
     var t = "0"
     this.setState({ amount:t,
                     bch: parseFloat((1 / this.state.exchangeRate) * t).toFixed(8)
